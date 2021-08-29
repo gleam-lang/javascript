@@ -90,3 +90,12 @@ pub external fn await6(
 
 pub external fn await_array(Array(Promise(a))) -> Promise(Array(a)) =
   "../../ffi.js" "all_promises"
+
+pub fn await_list(xs: List(Promise(a))) -> Promise(List(a)) {
+  xs
+  |> do_await_list
+  |> map(array.to_list)
+}
+
+pub external fn do_await_list(List(Promise(a))) -> Promise(Array(a)) =
+  "../../ffi.js" "all_promises"

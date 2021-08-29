@@ -140,3 +140,15 @@ pub fn await_array_test() {
   ]))
   |> promise.tap(fn(x) { assert [1, 3, 4, 6, 10, 13] = array.to_list(x) })
 }
+
+pub fn await_list_test() {
+  promise.await_list([
+    promise.resolve(1),
+    promise.resolve(3),
+    promise.resolve(4),
+    promise.resolve(6),
+    promise.resolve(10),
+    promise.resolve(13),
+  ])
+  |> promise.tap(fn(x) { assert [1, 3, 4, 6, 10, 13] = x })
+}
