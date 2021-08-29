@@ -64,3 +64,33 @@ export function type_of(value) {
 export function get_symbol(name) {
   return Symbol.for(name);
 }
+
+// A wrapper around a promise to prevent `Promise<Promise<T>>` collapsing into
+// `Promise<T>`.
+class PromiseLayer {
+  constructor(promise) {
+    this.promise = promise;
+  }
+
+  static wrap(value) {
+    return value instanceof Promise ? new PromiseLayer(value) : value;
+  }
+
+  static unwrap(value) {
+    return value instanceof PromiseLayer ? value.promise : value;
+  }
+}
+
+export function resolve(value) {
+  return Promise.resolve(PromiseLayer.wrap(value));
+}
+
+export function then(promise, fn) {
+  return promise.then((value) => fn(PromiseLayer.unwrap(value)));
+}
+
+export function map_promise(promise, fn) {
+  return promise.then((value) =>
+    PromiseLayer.wrap(fn(PromiseLayer.unwrap(value)))
+  );
+}
