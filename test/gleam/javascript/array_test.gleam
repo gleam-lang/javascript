@@ -69,3 +69,25 @@ pub fn fold_right_test() {
     |> array.from_list
     |> array.fold_right([], fn(a, e) { [e, ..a] })
 }
+
+pub fn index_test() {
+  assert Ok(1) =
+    [1, 2]
+    |> array.from_list
+    |> array.get(0)
+
+  assert Ok(2) =
+    [1, 2]
+    |> array.from_list
+    |> array.get(1)
+
+  assert Error(Nil) =
+    [1, 2]
+    |> array.from_list
+    |> array.get(2)
+
+  assert Error(Nil) =
+    [1, 2]
+    |> array.from_list
+    |> array.get(-1)
+}

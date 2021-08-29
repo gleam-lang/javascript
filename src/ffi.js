@@ -1,3 +1,5 @@
+import { Ok, Error } from "./gleam.js";
+
 export function toArray(list) {
   return list.toArray();
 }
@@ -16,4 +18,8 @@ export function reduce(thing, acc, fn) {
 
 export function reduceRight(thing, acc, fn) {
   return thing.reduceRight(fn, acc);
+}
+
+export function index(thing, index) {
+  return index in thing ? new Ok(thing[index]) : new Error(undefined);
 }

@@ -1,3 +1,5 @@
+// TODO: docs
+// TODO: labels
 pub external type Array(element)
 
 pub external fn to_list(Array(element)) -> List(element) =
@@ -17,3 +19,6 @@ pub external fn fold(Array(e), a, fn(a, e) -> a) -> a =
 
 pub external fn fold_right(Array(e), a, fn(a, e) -> a) -> a =
   "../../ffi.js" "reduceRight"
+
+pub external fn get(Array(e), Int) -> Result(e, Nil) =
+  "../../ffi.js" "index"
