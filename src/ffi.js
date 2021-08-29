@@ -120,5 +120,9 @@ export function set_reference(ref, value) {
 }
 
 export function all_promises(...promises) {
-  return Promise.all(promises);
+  if (promises.length === 1) {
+    return Promise.all(promises[0]);
+  } else {
+    return Promise.all(promises);
+  }
 }

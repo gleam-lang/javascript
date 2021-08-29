@@ -1,4 +1,5 @@
 import gleam/dynamic.{Dynamic}
+import gleam/javascript/array.{Array}
 
 // TODO: docs
 // TODO: labels
@@ -85,4 +86,7 @@ pub external fn await6(
   Promise(e),
   Promise(f),
 ) -> Promise(#(a, b, c, d, e, f)) =
+  "../../ffi.js" "all_promises"
+
+pub external fn await_array(Array(Promise(a))) -> Promise(Array(a)) =
   "../../ffi.js" "all_promises"

@@ -9,5 +9,5 @@
   `to_list`, `from_list`, `map`, `fold`, `fold_right`, `get`, and `length`
   functions.
 - The `javascript/promise` module was created with the `Promise(value)` type and
-  `rescue`, `resolve`, `tap`, `map_try`, `map`, `then_try`, `await{2,6}` and
-  `then` functions.
+  `rescue`, `resolve`, `tap`, `map_try`, `map`, `then_try`, `await{2,6}`,
+  `await_array`, and `then` functions.
