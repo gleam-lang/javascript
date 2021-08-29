@@ -31,3 +31,16 @@ pub fn map_try(
     }
   })
 }
+
+pub fn then_try(
+  promise: Promise(Result(a, e)),
+  callback: fn(a) -> Promise(Result(b, e)),
+) -> Promise(Result(b, e)) {
+  promise
+  |> then(fn(result) {
+    case result {
+      Ok(a) -> callback(a)
+      Error(e) -> resolve(Error(e))
+    }
+  })
+}

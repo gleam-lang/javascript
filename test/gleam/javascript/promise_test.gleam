@@ -53,3 +53,21 @@ pub fn map_try_error_test() -> Promise(Result(Int, Int)) {
   |> promise.map_try(fn(a) { Ok(a + 1) })
   |> promise.tap(fn(a) { assert Error(1) = a })
 }
+
+pub fn then_try_ok_ok_test() -> Promise(Result(Int, Int)) {
+  promise.resolve(Ok(1))
+  |> promise.then_try(fn(a) { promise.resolve(Ok(a + 1)) })
+  |> promise.tap(fn(a) { assert Ok(2) = a })
+}
+
+pub fn then_try_ok_error_test() -> Promise(Result(Int, Int)) {
+  promise.resolve(Ok(1))
+  |> promise.then_try(fn(a) { promise.resolve(Error(a + 1)) })
+  |> promise.tap(fn(a) { assert Error(2) = a })
+}
+
+pub fn then_try_error_test() -> Promise(Result(Int, Int)) {
+  promise.resolve(Error(1))
+  |> promise.then_try(fn(a) { promise.resolve(Ok(a + 1)) })
+  |> promise.tap(fn(a) { assert Error(1) = a })
+}
