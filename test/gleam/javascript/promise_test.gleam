@@ -84,3 +84,46 @@ pub fn rescue_poisoned_test() {
   |> promise.rescue(fn(_) { 100 })
   |> promise.tap(fn(a) { assert 100 = a })
 }
+
+pub fn await2_test() {
+  promise.await2(promise.resolve(1), promise.resolve(3))
+  |> promise.tap(fn(x) { assert #(1, 3) = x })
+}
+
+pub fn await3_test() {
+  promise.await3(promise.resolve(1), promise.resolve(3), promise.resolve(4))
+  |> promise.tap(fn(x) { assert #(1, 3, 4) = x })
+}
+
+pub fn await4_test() {
+  promise.await4(
+    promise.resolve(1),
+    promise.resolve(3),
+    promise.resolve(4),
+    promise.resolve(6),
+  )
+  |> promise.tap(fn(x) { assert #(1, 3, 4, 6) = x })
+}
+
+pub fn await5_test() {
+  promise.await5(
+    promise.resolve(1),
+    promise.resolve(3),
+    promise.resolve(4),
+    promise.resolve(6),
+    promise.resolve(10),
+  )
+  |> promise.tap(fn(x) { assert #(1, 3, 4, 6, 10) = x })
+}
+
+pub fn await6_test() {
+  promise.await6(
+    promise.resolve(1),
+    promise.resolve(3),
+    promise.resolve(4),
+    promise.resolve(6),
+    promise.resolve(10),
+    promise.resolve(13),
+  )
+  |> promise.tap(fn(x) { assert #(1, 3, 4, 6, 10, 13) = x })
+}

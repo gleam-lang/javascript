@@ -118,3 +118,7 @@ export function set_reference(ref, value) {
   ref.value = value;
   return previous;
 }
+
+export function all_promises(...promises) {
+  return Promise.all(promises);
+}
