@@ -98,3 +98,23 @@ export function map_promise(promise, fn) {
 export function rescue(promise, fn) {
   return promise.catch((error) => fn(error));
 }
+
+class Reference {
+  constructor(value) {
+    this.value = value;
+  }
+}
+
+export function dereference(reference) {
+  return reference.value;
+}
+
+export function make_reference(value) {
+  return new Reference(value);
+}
+
+export function set_reference(ref, value) {
+  let previous = ref.value;
+  ref.value = value;
+  return previous;
+}

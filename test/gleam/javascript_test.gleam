@@ -23,3 +23,11 @@ pub fn find_symbol_test() {
   assert True = javascript.get_symbol("Gleam") == javascript.get_symbol("Gleam")
   assert False = javascript.get_symbol("Gleam") == javascript.get_symbol("Lua")
 }
+
+pub fn reference_test() {
+  let ref = javascript.make_reference(1)
+  assert 1 = javascript.update_reference(ref, fn(a) { a + 1 })
+  assert 2 = javascript.dereference(ref)
+  assert 2 = javascript.set_reference(ref, 3)
+  assert 3 = javascript.dereference(ref)
+}
