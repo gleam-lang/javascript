@@ -35,3 +35,21 @@ pub fn tap_test() -> Promise(Int) {
   |> promise.tap(fn(a) { a + 1 })
   |> promise.tap(fn(a) { assert 1 = a })
 }
+
+pub fn map_try_ok_ok_test() -> Promise(Result(Int, Int)) {
+  promise.resolve(Ok(1))
+  |> promise.map_try(fn(a) { Ok(a + 1) })
+  |> promise.tap(fn(a) { assert Ok(2) = a })
+}
+
+pub fn map_try_ok_error_test() -> Promise(Result(Int, Int)) {
+  promise.resolve(Ok(1))
+  |> promise.map_try(fn(a) { Error(a + 1) })
+  |> promise.tap(fn(a) { assert Error(2) = a })
+}
+
+pub fn map_try_error_test() -> Promise(Result(Int, Int)) {
+  promise.resolve(Error(1))
+  |> promise.map_try(fn(a) { Ok(a + 1) })
+  |> promise.tap(fn(a) { assert Error(1) = a })
+}

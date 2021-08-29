@@ -18,3 +18,16 @@ pub fn tap(promise: Promise(a), callback: fn(a) -> b) -> Promise(a) {
     a
   })
 }
+
+pub fn map_try(
+  promise: Promise(Result(a, e)),
+  callback: fn(a) -> Result(b, e),
+) -> Promise(Result(b, e)) {
+  promise
+  |> map(fn(result) {
+    case result {
+      Ok(a) -> callback(a)
+      Error(e) -> Error(e)
+    }
+  })
+}
