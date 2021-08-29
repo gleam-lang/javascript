@@ -8,3 +8,6 @@ pub external fn from_list(List(element)) -> Array(element) =
 
 pub external fn length(Array(element)) -> Int =
   "../../ffi.js" "length"
+
+pub external fn map(Array(a), fn(a) -> b) -> Array(b) =
+  "../../ffi.js" "map"
