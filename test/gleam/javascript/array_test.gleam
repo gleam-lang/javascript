@@ -31,3 +31,20 @@ pub fn map_test() {
     |> array.map(fn(a) { a + 1 })
     |> array.to_list
 }
+
+pub fn fold_test() {
+  assert [] =
+    []
+    |> array.from_list
+    |> array.fold([], fn(a, e) { [e, ..a] })
+
+  assert [4, 3, 2, 1] =
+    [1, 2, 3, 4]
+    |> array.from_list
+    |> array.fold([], fn(a, e) { [e, ..a] })
+
+  assert [1, 2, 3, 4] =
+    [4, 3, 2, 1]
+    |> array.from_list
+    |> array.fold([], fn(a, e) { [e, ..a] })
+}

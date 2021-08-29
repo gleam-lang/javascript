@@ -11,3 +11,6 @@ pub external fn length(Array(element)) -> Int =
 
 pub external fn map(Array(a), fn(a) -> b) -> Array(b) =
   "../../ffi.js" "map"
+
+pub external fn fold(Array(e), a, fn(a, e) -> a) -> a =
+  "../../ffi.js" "reduce"

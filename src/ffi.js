@@ -9,3 +9,7 @@ export function map(thing, fn) {
 export function length(thing) {
   return thing.length;
 }
+
+export function reduce(thing, acc, fn) {
+  return thing.reduce(fn, acc);
+}
