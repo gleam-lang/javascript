@@ -1,9 +1,14 @@
+import gleam/dynamic.{Dynamic}
+
 // TODO: docs
 // TODO: labels
 pub external type Promise(value)
 
 pub external fn resolve(value) -> Promise(value) =
   "../../ffi.js" "resolve"
+
+pub external fn rescue(Promise(value), fn(Dynamic) -> value) -> Promise(value) =
+  "../../ffi.js" "rescue"
 
 pub external fn then(Promise(a), fn(a) -> Promise(b)) -> Promise(b) =
   "../../ffi.js" "then"

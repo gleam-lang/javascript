@@ -71,3 +71,16 @@ pub fn then_try_error_test() -> Promise(Result(Int, Int)) {
   |> promise.then_try(fn(a) { promise.resolve(Ok(a + 1)) })
   |> promise.tap(fn(a) { assert Error(1) = a })
 }
+
+pub fn rescue_healthy_test() {
+  promise.resolve(1)
+  |> promise.rescue(fn(_) { 100 })
+  |> promise.tap(fn(a) { assert 1 = a })
+}
+
+pub fn rescue_poisoned_test() {
+  promise.resolve(1)
+  |> promise.map(fn(_) { assert 1 = 2 })
+  |> promise.rescue(fn(_) { 100 })
+  |> promise.tap(fn(a) { assert 100 = a })
+}

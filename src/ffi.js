@@ -94,3 +94,7 @@ export function map_promise(promise, fn) {
     PromiseLayer.wrap(fn(PromiseLayer.unwrap(value)))
   );
 }
+
+export function rescue(promise, fn) {
+  return promise.catch((error) => fn(error));
+}
