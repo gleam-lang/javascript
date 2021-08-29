@@ -1,3 +1,9 @@
-# Gleam JavaScript
+# Gleam JavaScript 🌼
 
-A library for making use of JavaScript specific code!
+Extra code for when running on JavaScript 
+
+## Features
+
+- Arrays
+- Symbols
+- `typeof`
