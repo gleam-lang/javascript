@@ -13,3 +13,7 @@ export function length(thing) {
 export function reduce(thing, acc, fn) {
   return thing.reduce(fn, acc);
 }
+
+export function reduceRight(thing, acc, fn) {
+  return thing.reduceRight(fn, acc);
+}

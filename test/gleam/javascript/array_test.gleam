@@ -16,6 +16,10 @@ pub fn length_test() {
   assert 0 =
     array.from_list([])
     |> array.length
+
+  assert 2 =
+    array.from_list([1, 2])
+    |> array.length
 }
 
 pub fn map_test() {
@@ -47,4 +51,21 @@ pub fn fold_test() {
     [4, 3, 2, 1]
     |> array.from_list
     |> array.fold([], fn(a, e) { [e, ..a] })
+}
+
+pub fn fold_right_test() {
+  assert [] =
+    []
+    |> array.from_list
+    |> array.fold_right([], fn(a, e) { [e, ..a] })
+
+  assert [1, 2, 3, 4] =
+    [1, 2, 3, 4]
+    |> array.from_list
+    |> array.fold_right([], fn(a, e) { [e, ..a] })
+
+  assert [4, 3, 2, 1] =
+    [4, 3, 2, 1]
+    |> array.from_list
+    |> array.fold_right([], fn(a, e) { [e, ..a] })
 }

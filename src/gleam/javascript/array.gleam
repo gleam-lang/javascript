@@ -14,3 +14,6 @@ pub external fn map(Array(a), fn(a) -> b) -> Array(b) =
 
 pub external fn fold(Array(e), a, fn(a, e) -> a) -> a =
   "../../ffi.js" "reduce"
+
+pub external fn fold_right(Array(e), a, fn(a, e) -> a) -> a =
+  "../../ffi.js" "reduceRight"
