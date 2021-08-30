@@ -2,11 +2,11 @@
 set -eu
 
 library_dir() {
-  echo "_build/deps/$1"
+  echo "target/deps/$1"
 }
 
 project_dir() {
-  echo "_build/lib/$1"
+  echo "target/lib/$1"
 }
 
 clone_dep() {

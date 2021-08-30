@@ -1,7 +1,7 @@
 import { readdir, stat } from "fs/promises";
 import { resolve, relative } from "path";
 
-const dir = "_build/lib/gleam_javascript";
+const dir = "target/lib/gleam_javascript";
 
 async function main() {
   console.log("Running tests...");

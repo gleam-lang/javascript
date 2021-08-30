@@ -4,6 +4,6 @@
     "test": "bash bin/test.sh"
   },
   "devDependencies": {
-    "gleam-packages": "file:./_build/lib"
+    "gleam-packages": "file:./target/lib"
   }
 }
