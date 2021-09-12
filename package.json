@@ -1,9 +1,18 @@
 {
+  "name": "gleam_javascript",
   "type": "module",
   "scripts": {
-    "test": "bash bin/test.sh"
+    "build": "node bin/build.js build",
+    "test": "node bin/build.js test"
   },
   "devDependencies": {
     "gleam-packages": "file:./target/lib"
-  }
+  },
+  "gleamDependencies": [
+    {
+      "name": "gleam_stdlib",
+      "ref": "main",
+      "url": "https://github.com/gleam-lang/stdlib.git"
+    }
+  ]
 }
