@@ -1,4 +1,14 @@
-import { stat, copyFile, readFile, mkdir, access, readdir } from "fs/promises";
+// Gleam build.js version:2021-09-12
+
+import {
+  rm,
+  stat,
+  copyFile,
+  readFile,
+  mkdir,
+  access,
+  readdir,
+} from "fs/promises";
 import { resolve, relative, join } from "path";
 import { promisify } from "util";
 import { exec as callbackExec } from "child_process";
@@ -47,6 +57,7 @@ async function buildProject({ name, root, dependencies, includeTests }) {
   let src = join(dir, "src");
   let test = join(dir, "test");
   let out = outDir(name);
+  await rm(out, { recursive: true });
   try {
     await exec(
       [
@@ -74,11 +85,11 @@ async function clone({ name, ref, url }) {
 }
 
 function libraryDir(name) {
-  return join("target", "deps", name);
+  return resolve(join("target", "deps", name));
 }
 
 function outDir(name) {
-  return join("target", "lib", name);
+  return resolve(join("target", "lib", name));
 }
 
 async function fileExists(path) {
@@ -124,6 +135,12 @@ ${failures} failures`);
   process.exit(failures ? 1 : 0);
 }
 
+async function start() {
+  let { name } = await build();
+  let { main } = await import(join(outDir(name), "main.js"));
+  return main();
+}
+
 async function getFiles(dir) {
   const subdirs = await readdir(dir);
   const files = await Promise.all(
@@ -143,11 +160,15 @@ async function main() {
     case "test":
       return await test();
 
+    case "start":
+      return await start();
+
     default:
       console.error(`
 Usage: 
   node bin/build.js test
   node bin/build.js build
+  node bin/build.js start
 `);
       process.exit(1);
   }
