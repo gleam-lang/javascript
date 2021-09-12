@@ -57,7 +57,7 @@ async function buildProject({ name, root, dependencies, includeTests }) {
   let src = join(dir, "src");
   let test = join(dir, "test");
   let out = outDir(name);
-  await rm(out, { recursive: true });
+  await rm(out, { recursive: true, force: true });
   try {
     await exec(
       [
