@@ -80,6 +80,7 @@ async function buildProject({ name, root, dependencies, includeTests }) {
 async function clone({ name, ref, url }) {
   let dir = libraryDir(name);
   if (await fileExists(dir)) return;
+  console.log("Cloning", name);
   await mkdir(dir, { recursive: true });
   await exec(`git clone --depth=1 --branch="${ref}" "${url}" "${dir}"`);
 }
