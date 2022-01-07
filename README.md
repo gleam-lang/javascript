@@ -1,8 +1,10 @@
 # Gleam JavaScript 🌼
 
-Extra code for when running on JavaScript 
+Work with JavaScript types and values in Gleam.
 
 ## Features
+
+This library contains modules for working with...
 
 - Arrays
 - Mutable references
