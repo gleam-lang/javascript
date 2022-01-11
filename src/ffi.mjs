@@ -1,4 +1,4 @@
-import { Ok, Error } from "./gleam.js";
+import { Ok, Error } from "./gleam.mjs";
 import {
   UndefinedType,
   ObjectType,
@@ -8,7 +8,7 @@ import {
   StringType,
   SymbolType,
   FunctionType,
-} from "./gleam/javascript.js";
+} from "./gleam/javascript.mjs";
 
 export function toArray(list) {
   return list.toArray();

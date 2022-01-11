@@ -13,21 +13,21 @@ pub type TypeOf {
 pub external type Symbol
 
 pub external fn type_of(value) -> TypeOf =
-  "../ffi.js" "type_of"
+  "../ffi.mjs" "type_of"
 
 pub external fn get_symbol(String) -> Symbol =
-  "../ffi.js" "get_symbol"
+  "../ffi.mjs" "get_symbol"
 
 pub external type Reference(value)
 
 pub external fn dereference(Reference(a)) -> a =
-  "../ffi.js" "dereference"
+  "../ffi.mjs" "dereference"
 
 pub external fn set_reference(Reference(a), a) -> a =
-  "../ffi.js" "set_reference"
+  "../ffi.mjs" "set_reference"
 
 pub external fn make_reference(a) -> Reference(a) =
-  "../ffi.js" "make_reference"
+  "../ffi.mjs" "make_reference"
 
 // returns the old value
 pub fn update_reference(ref: Reference(a), f: fn(a) -> a) -> a {
