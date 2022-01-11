@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v0.1.0 - 2022-01-11
 
 - The `javascript` module was created with the `TypeOf`, and `Symbol` types, and
   `find_symbol`, `make_reference`, `set_reference`, `update_reference`,
