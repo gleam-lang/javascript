@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.2.0 - 2022-11-22
+
+- The `promise.do_await_list` function has been removed.
+
 ## v0.1.0 - 2022-01-11
 
 - The `javascript` module was created with the `TypeOf`, and `Symbol` types, and
