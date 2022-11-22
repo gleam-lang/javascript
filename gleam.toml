@@ -1,5 +1,5 @@
 name = "gleam_javascript"
-version = "0.1.0"
+version = "0.2.0"
 licences = ["Apache-2.0"]
 description = "Work with JavaScript types and values in Gleam"
 
@@ -10,6 +10,9 @@ links = [
   { title = "Website", href = "https://gleam.run" },
   { title = "Sponsor", href = "https://github.com/sponsors/lpil" },
 ]
+
+[javascript]
+typescript_declarations = true
 
 [dependencies]
 gleam_stdlib = "~> 0.19"

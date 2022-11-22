@@ -97,5 +97,5 @@ pub fn await_list(xs: List(Promise(a))) -> Promise(List(a)) {
   |> map(array.to_list)
 }
 
-pub external fn do_await_list(List(Promise(a))) -> Promise(Array(a)) =
+external fn do_await_list(List(Promise(a))) -> Promise(Array(a)) =
   "../../ffi.mjs" "all_promises"
