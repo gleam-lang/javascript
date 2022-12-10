@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.3.0 - 2022-11-22
+
+- The `then` and `then_try` function in the `promise` module have been renamed
+  to `await` and `try_await`.
 ## v0.2.0 - 2022-11-22
 
 - The `promise.do_await_list` function has been removed.
