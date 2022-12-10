@@ -11,7 +11,7 @@ pub external fn resolve(value) -> Promise(value) =
 pub external fn rescue(Promise(value), fn(Dynamic) -> value) -> Promise(value) =
   "../../ffi.mjs" "rescue"
 
-pub external fn then(Promise(a), fn(a) -> Promise(b)) -> Promise(b) =
+pub external fn await(Promise(a), fn(a) -> Promise(b)) -> Promise(b) =
   "../../ffi.mjs" "then"
 
 pub external fn map(Promise(a), fn(a) -> b) -> Promise(b) =
@@ -38,12 +38,12 @@ pub fn map_try(
   })
 }
 
-pub fn then_try(
+pub fn try_await(
   promise: Promise(Result(a, e)),
   callback: fn(a) -> Promise(Result(b, e)),
 ) -> Promise(Result(b, e)) {
   promise
-  |> then(fn(result) {
+  |> await(fn(result) {
     case result {
       Ok(a) -> callback(a)
       Error(e) -> resolve(Error(e))

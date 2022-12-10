@@ -13,15 +13,15 @@ pub fn map_does_not_collapse_nested_promise_test() -> Promise(Promise(Int)) {
   })
 }
 
-pub fn then_test() -> Promise(Int) {
+pub fn await_test() -> Promise(Int) {
   promise.resolve(1)
-  |> promise.then(fn(a) { promise.resolve(a + 1) })
+  |> promise.await(fn(a) { promise.resolve(a + 1) })
   |> promise.tap(fn(a) { assert 2 = a })
 }
 
-pub fn then_does_collapse_nested_promise_test() -> Promise(Int) {
+pub fn await_does_not_collapse_nested_promise_test() -> Promise(Int) {
   promise.resolve(1)
-  |> promise.then(promise.resolve)
+  |> promise.await(promise.resolve)
   |> promise.tap(fn(value) { assert 1 = value })
 }
 
@@ -55,21 +55,21 @@ pub fn map_try_error_test() -> Promise(Result(Int, Int)) {
   |> promise.tap(fn(a) { assert Error(1) = a })
 }
 
-pub fn then_try_ok_ok_test() -> Promise(Result(Int, Int)) {
+pub fn try_await_ok_ok_test() -> Promise(Result(Int, Int)) {
   promise.resolve(Ok(1))
-  |> promise.then_try(fn(a) { promise.resolve(Ok(a + 1)) })
+  |> promise.try_await(fn(a) { promise.resolve(Ok(a + 1)) })
   |> promise.tap(fn(a) { assert Ok(2) = a })
 }
 
-pub fn then_try_ok_error_test() -> Promise(Result(Int, Int)) {
+pub fn try_await_ok_error_test() -> Promise(Result(Int, Int)) {
   promise.resolve(Ok(1))
-  |> promise.then_try(fn(a) { promise.resolve(Error(a + 1)) })
+  |> promise.try_await(fn(a) { promise.resolve(Error(a + 1)) })
   |> promise.tap(fn(a) { assert Error(2) = a })
 }
 
-pub fn then_try_error_test() -> Promise(Result(Int, Int)) {
+pub fn try_await_error_test() -> Promise(Result(Int, Int)) {
   promise.resolve(Error(1))
-  |> promise.then_try(fn(a) { promise.resolve(Ok(a + 1)) })
+  |> promise.try_await(fn(a) { promise.resolve(Ok(a + 1)) })
   |> promise.tap(fn(a) { assert Error(1) = a })
 }
 
