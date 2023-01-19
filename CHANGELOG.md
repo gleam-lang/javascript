@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.4.0 - 2022-12-10
+## v0.4.0 - 2023-01-19
 
 - `array.length` was renamed to `array.size` to match Gleam conventions of size
   being used when the operation is constant time.
