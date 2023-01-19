@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.4.0 - 2022-12-10
+
+- `array.length` was renamed to `array.size` to match Gleam conventions of size
+  being used when the operation is constant time.
+
 ## v0.3.0 - 2022-12-10
 
 - The `then` and `then_try` function in the `promise` module have been renamed

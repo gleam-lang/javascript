@@ -12,14 +12,14 @@ pub fn to_and_from_list_test() {
     |> array.to_list
 }
 
-pub fn length_test() {
+pub fn size_test() {
   assert 0 =
     array.from_list([])
-    |> array.length
+    |> array.size
 
   assert 2 =
     array.from_list([1, 2])
-    |> array.length
+    |> array.size
 }
 
 pub fn map_test() {
