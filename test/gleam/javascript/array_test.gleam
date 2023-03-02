@@ -1,35 +1,35 @@
 import gleam/javascript/array
 
 pub fn to_and_from_list_test() {
-  assert [] =
+  let assert [] =
     []
     |> array.from_list
     |> array.to_list
 
-  assert [1, 2, 3] =
+  let assert [1, 2, 3] =
     [1, 2, 3]
     |> array.from_list
     |> array.to_list
 }
 
 pub fn size_test() {
-  assert 0 =
+  let assert 0 =
     array.from_list([])
     |> array.size
 
-  assert 2 =
+  let assert 2 =
     array.from_list([1, 2])
     |> array.size
 }
 
 pub fn map_test() {
-  assert [] =
+  let assert [] =
     []
     |> array.from_list
     |> array.map(fn(a) { a + 1 })
     |> array.to_list
 
-  assert [2, 3, 4] =
+  let assert [2, 3, 4] =
     [1, 2, 3]
     |> array.from_list
     |> array.map(fn(a) { a + 1 })
@@ -37,56 +37,56 @@ pub fn map_test() {
 }
 
 pub fn fold_test() {
-  assert [] =
+  let assert [] =
     []
     |> array.from_list
     |> array.fold([], fn(a, e) { [e, ..a] })
 
-  assert [4, 3, 2, 1] =
+  let assert [4, 3, 2, 1] =
     [1, 2, 3, 4]
     |> array.from_list
     |> array.fold([], fn(a, e) { [e, ..a] })
 
-  assert [1, 2, 3, 4] =
+  let assert [1, 2, 3, 4] =
     [4, 3, 2, 1]
     |> array.from_list
     |> array.fold([], fn(a, e) { [e, ..a] })
 }
 
 pub fn fold_right_test() {
-  assert [] =
+  let assert [] =
     []
     |> array.from_list
     |> array.fold_right([], fn(a, e) { [e, ..a] })
 
-  assert [1, 2, 3, 4] =
+  let assert [1, 2, 3, 4] =
     [1, 2, 3, 4]
     |> array.from_list
     |> array.fold_right([], fn(a, e) { [e, ..a] })
 
-  assert [4, 3, 2, 1] =
+  let assert [4, 3, 2, 1] =
     [4, 3, 2, 1]
     |> array.from_list
     |> array.fold_right([], fn(a, e) { [e, ..a] })
 }
 
 pub fn index_test() {
-  assert Ok(1) =
+  let assert Ok(1) =
     [1, 2]
     |> array.from_list
     |> array.get(0)
 
-  assert Ok(2) =
+  let assert Ok(2) =
     [1, 2]
     |> array.from_list
     |> array.get(1)
 
-  assert Error(Nil) =
+  let assert Error(Nil) =
     [1, 2]
     |> array.from_list
     |> array.get(2)
 
-  assert Error(Nil) =
+  let assert Error(Nil) =
     [1, 2]
     |> array.from_list
     |> array.get(-1)
