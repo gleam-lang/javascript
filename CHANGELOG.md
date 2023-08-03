@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.5.0 - 2023-01-19
+
+- Updated for Gleam v0.30.0.
+
 ## v0.4.0 - 2023-01-19
 
 - `array.length` was renamed to `array.size` to match Gleam conventions of size

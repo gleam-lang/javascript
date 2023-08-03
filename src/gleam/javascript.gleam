@@ -10,24 +10,24 @@ pub type TypeOf {
   FunctionType
 }
 
-pub external type Symbol
+pub type Symbol
 
-pub external fn type_of(value) -> TypeOf =
-  "../ffi.mjs" "type_of"
+@external(javascript, "../ffi.mjs", "type_of")
+pub fn type_of(a: value) -> TypeOf
 
-pub external fn get_symbol(String) -> Symbol =
-  "../ffi.mjs" "get_symbol"
+@external(javascript, "../ffi.mjs", "get_symbol")
+pub fn get_symbol(a: String) -> Symbol
 
-pub external type Reference(value)
+pub type Reference(value)
 
-pub external fn dereference(Reference(a)) -> a =
-  "../ffi.mjs" "dereference"
+@external(javascript, "../ffi.mjs", "dereference")
+pub fn dereference(a: Reference(a)) -> a
 
-pub external fn set_reference(Reference(a), a) -> a =
-  "../ffi.mjs" "set_reference"
+@external(javascript, "../ffi.mjs", "set_reference")
+pub fn set_reference(a: Reference(a), b: a) -> a
 
-pub external fn make_reference(a) -> Reference(a) =
-  "../ffi.mjs" "make_reference"
+@external(javascript, "../ffi.mjs", "make_reference")
+pub fn make_reference(a: a) -> Reference(a)
 
 // returns the old value
 pub fn update_reference(ref: Reference(a), f: fn(a) -> a) -> a {

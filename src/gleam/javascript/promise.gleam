@@ -3,19 +3,19 @@ import gleam/javascript/array.{Array}
 
 // TODO: docs
 // TODO: labels
-pub external type Promise(value)
+pub type Promise(value)
 
-pub external fn resolve(value) -> Promise(value) =
-  "../../ffi.mjs" "resolve"
+@external(javascript, "../../ffi.mjs", "resolve")
+pub fn resolve(a: value) -> Promise(value)
 
-pub external fn rescue(Promise(value), fn(Dynamic) -> value) -> Promise(value) =
-  "../../ffi.mjs" "rescue"
+@external(javascript, "../../ffi.mjs", "rescue")
+pub fn rescue(a: Promise(value), b: fn(Dynamic) -> value) -> Promise(value)
 
-pub external fn await(Promise(a), fn(a) -> Promise(b)) -> Promise(b) =
-  "../../ffi.mjs" "then"
+@external(javascript, "../../ffi.mjs", "then")
+pub fn await(a: Promise(a), b: fn(a) -> Promise(b)) -> Promise(b)
 
-pub external fn map(Promise(a), fn(a) -> b) -> Promise(b) =
-  "../../ffi.mjs" "map_promise"
+@external(javascript, "../../ffi.mjs", "map_promise")
+pub fn map(a: Promise(a), b: fn(a) -> b) -> Promise(b)
 
 pub fn tap(promise: Promise(a), callback: fn(a) -> b) -> Promise(a) {
   promise
@@ -51,45 +51,45 @@ pub fn try_await(
   })
 }
 
-pub external fn await2(Promise(a), Promise(b)) -> Promise(#(a, b)) =
-  "../../ffi.mjs" "all_promises"
+@external(javascript, "../../ffi.mjs", "all_promises")
+pub fn await2(a: Promise(a), b: Promise(b)) -> Promise(#(a, b))
 
-pub external fn await3(
-  Promise(a),
-  Promise(b),
-  Promise(c),
-) -> Promise(#(a, b, c)) =
-  "../../ffi.mjs" "all_promises"
+@external(javascript, "../../ffi.mjs", "all_promises")
+pub fn await3(
+  a: Promise(a),
+  b: Promise(b),
+  c: Promise(c),
+) -> Promise(#(a, b, c))
 
-pub external fn await4(
-  Promise(a),
-  Promise(b),
-  Promise(c),
-  Promise(d),
-) -> Promise(#(a, b, c, d)) =
-  "../../ffi.mjs" "all_promises"
+@external(javascript, "../../ffi.mjs", "all_promises")
+pub fn await4(
+  a: Promise(a),
+  b: Promise(b),
+  c: Promise(c),
+  d: Promise(d),
+) -> Promise(#(a, b, c, d))
 
-pub external fn await5(
-  Promise(a),
-  Promise(b),
-  Promise(c),
-  Promise(d),
-  Promise(e),
-) -> Promise(#(a, b, c, d, e)) =
-  "../../ffi.mjs" "all_promises"
+@external(javascript, "../../ffi.mjs", "all_promises")
+pub fn await5(
+  a: Promise(a),
+  b: Promise(b),
+  c: Promise(c),
+  d: Promise(d),
+  e: Promise(e),
+) -> Promise(#(a, b, c, d, e))
 
-pub external fn await6(
-  Promise(a),
-  Promise(b),
-  Promise(c),
-  Promise(d),
-  Promise(e),
-  Promise(f),
-) -> Promise(#(a, b, c, d, e, f)) =
-  "../../ffi.mjs" "all_promises"
+@external(javascript, "../../ffi.mjs", "all_promises")
+pub fn await6(
+  a: Promise(a),
+  b: Promise(b),
+  c: Promise(c),
+  d: Promise(d),
+  e: Promise(e),
+  f: Promise(f),
+) -> Promise(#(a, b, c, d, e, f))
 
-pub external fn await_array(Array(Promise(a))) -> Promise(Array(a)) =
-  "../../ffi.mjs" "all_promises"
+@external(javascript, "../../ffi.mjs", "all_promises")
+pub fn await_array(a: Array(Promise(a))) -> Promise(Array(a))
 
 pub fn await_list(xs: List(Promise(a))) -> Promise(List(a)) {
   xs
@@ -97,5 +97,5 @@ pub fn await_list(xs: List(Promise(a))) -> Promise(List(a)) {
   |> map(array.to_list)
 }
 
-external fn do_await_list(List(Promise(a))) -> Promise(Array(a)) =
-  "../../ffi.mjs" "all_promises"
+@external(javascript, "../../ffi.mjs", "all_promises")
+fn do_await_list(a: List(Promise(a))) -> Promise(Array(a))

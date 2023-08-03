@@ -2,28 +2,28 @@
 ///
 /// Unlike most data structures in Gleam this one is mutable.
 ///
-pub external type Array(element)
+pub type Array(element)
 
 /// Convert a JavaScript array to a Gleam list.
 ///
 /// Runs in linear time.
 ///
-pub external fn to_list(Array(element)) -> List(element) =
-  "../../gleam.mjs" "toList"
+@external(javascript, "../../gleam.mjs", "toList")
+pub fn to_list(a: Array(element)) -> List(element)
 
 /// Convert a Gleam list to a JavaScript array.
 ///
 /// Runs in linear time.
 ///
-pub external fn from_list(List(element)) -> Array(element) =
-  "../../ffi.mjs" "toArray"
+@external(javascript, "../../ffi.mjs", "toArray")
+pub fn from_list(a: List(element)) -> Array(element)
 
 /// Get the number of elements in the array.
 ///
 /// Runs in constant time.
 ///
-pub external fn size(Array(element)) -> Int =
-  "../../ffi.mjs" "length"
+@external(javascript, "../../ffi.mjs", "length")
+pub fn size(a: Array(element)) -> Int
 
 /// Returns a new array containing only the elements of the first array after
 /// the function has been applied to each one.
@@ -37,8 +37,8 @@ pub external fn size(Array(element)) -> Int =
 /// from_list([4, 8, 12])
 /// ```
 ///
-pub external fn map(Array(a), with: fn(a) -> b) -> Array(b) =
-  "../../ffi.mjs" "map"
+@external(javascript, "../../ffi.mjs", "map")
+pub fn map(a: Array(a), with with: fn(a) -> b) -> Array(b)
 
 /// Reduces a list of elements into a single value by calling a given function
 /// on each element, going from left to right.
@@ -48,8 +48,8 @@ pub external fn map(Array(a), with: fn(a) -> b) -> Array(b) =
 ///
 /// Runs in linear time.
 ///
-pub external fn fold(over: Array(e), from: a, with: fn(a, e) -> a) -> a =
-  "../../ffi.mjs" "reduce"
+@external(javascript, "../../ffi.mjs", "reduce")
+pub fn fold(over over: Array(e), from from: a, with with: fn(a, e) -> a) -> a
 
 /// Reduces a list of elements into a single value by calling a given function
 /// on each element, going from right to left.
@@ -59,8 +59,12 @@ pub external fn fold(over: Array(e), from: a, with: fn(a, e) -> a) -> a =
 ///
 /// Runs in linear time.
 ///
-pub external fn fold_right(over: Array(e), from: a, with: fn(a, e) -> a) -> a =
-  "../../ffi.mjs" "reduceRight"
+@external(javascript, "../../ffi.mjs", "reduceRight")
+pub fn fold_right(
+  over over: Array(e),
+  from from: a,
+  with with: fn(a, e) -> a,
+) -> a
 
 /// Get the element at the given index.
 ///
@@ -76,5 +80,5 @@ pub external fn fold_right(over: Array(e), from: a, with: fn(a, e) -> a) -> a =
 /// Error(Nil)
 /// ```
 ///
-pub external fn get(Array(e), Int) -> Result(e, Nil) =
-  "../../ffi.mjs" "index"
+@external(javascript, "../../ffi.mjs", "index")
+pub fn get(a: Array(e), b: Int) -> Result(e, Nil)
