@@ -2,6 +2,23 @@ import gleam/javascript/promise.{Promise}
 import gleam/javascript/array
 import gleam/javascript.{ObjectType}
 
+pub fn new_promise_test() {
+  promise.new(fn(resolve) { resolve(1) })
+  |> promise.tap(fn(value) {
+    let assert 1 = value
+  })
+}
+
+pub fn new_does_not_collapse_nested_promise_test() {
+  promise.new(fn(resolve) { resolve(promise.new(fn(resolve) { resolve(1) })) })
+  |> promise.tap(fn(value) {
+    // If the `Promise(Promise(Int))` collapsed into `Promise(Int)` (as they
+    // do for normal JS promises) then this would fail as the value would be the
+    // int value `1`.
+    let assert ObjectType = javascript.type_of(value)
+  })
+}
+
 pub fn map_does_not_collapse_nested_promise_test() -> Promise(Promise(Int)) {
   promise.resolve(1)
   |> promise.map(promise.resolve)

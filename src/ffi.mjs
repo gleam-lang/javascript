@@ -82,7 +82,7 @@ class PromiseLayer {
 }
 
 export function newPromise(executor) {
-  return Promise.resolve((resolve) =>
+  return new Promise((resolve) =>
     executor((value) => {
       resolve(PromiseLayer.wrap(value));
     })
