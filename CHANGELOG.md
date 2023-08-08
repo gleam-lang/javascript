@@ -1,5 +1,6 @@
 # Changelog
 
+- Add `map` module native JavaScript maps.
 ## v0.5.0 - 2023-01-19
 
 - Updated for Gleam v0.30.0.
