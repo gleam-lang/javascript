@@ -5,6 +5,9 @@ import gleam/javascript/array.{Array}
 // TODO: labels
 pub type Promise(value)
 
+@external(javascript, "../../ffi.mjs", "newPromise")
+pub fn new(a: fn(fn(value) -> Nil) -> Nil) -> Promise(value)
+
 @external(javascript, "../../ffi.mjs", "resolve")
 pub fn resolve(a: value) -> Promise(value)
 
