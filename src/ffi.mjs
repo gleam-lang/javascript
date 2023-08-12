@@ -134,3 +134,22 @@ export function all_promises(...promises) {
     return Promise.all(promises);
   }
 }
+
+export function map_new() {
+  return new Map();
+}
+
+export function map_set(map, key, value) {
+  return map.set(key, value);
+}
+
+export function map_get(map, key) {
+  if (map.has(key)) {
+    return new Ok(map.get(key));
+  }
+  return new Error(undefined);
+}
+
+export function map_size(map) {
+  return map.size;
+}
