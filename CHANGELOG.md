@@ -1,5 +1,7 @@
 # Changelog
 
+## v0.6.0 - 2023-08-12
+
 - Add `map` module native JavaScript maps.
 - `promise.new` is added to enable creating promises with a delayed resolve.
 
