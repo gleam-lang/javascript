@@ -176,7 +176,11 @@ export function power(a, b) {
 }
 
 export function divide(a, b) {
-  return a / b;
+  try {
+    return new Ok(a / b);
+  } catch (_) {
+    return new Error
+  }
 }
 
 export function fromInt(a) {

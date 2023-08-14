@@ -76,6 +76,16 @@ pub fn divide_test() {
 
   use r <- result.then(big_int.from_string("9223372036854775808"))
   big_int.divide(a, b)
-  |> should.equal(r)
+  |> should.equal(Ok(r))
+  Ok(Nil)
+}
+
+pub fn zero_divide_test() {
+  // a = 2 ^ 64
+  use a <- result.then(big_int.from_string("18446744073709551616"))
+  use b <- result.then(big_int.from_string("0"))
+
+  big_int.divide(a, b)
+  |> should.equal(Error(Nil))
   Ok(Nil)
 }
