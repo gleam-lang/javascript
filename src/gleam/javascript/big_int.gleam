@@ -24,8 +24,8 @@ pub fn power(a: BigInt, b: BigInt) -> BigInt
 @external(javascript, "../../ffi.mjs", "divide")
 pub fn divide(a: BigInt, b: BigInt) -> BigInt
 
-@external(javascript, "../../ffi.mjs", "from")
+@external(javascript, "../../ffi.mjs", "fromInt")
 pub fn from_int(a: Int) -> BigInt
 
-@external(javascript, "../../ffi.mjs", "from")
-pub fn from_string(a: String) -> BigInt
+@external(javascript, "../../ffi.mjs", "fromString")
+pub fn from_string(a: String) -> Result(BigInt, Nil)

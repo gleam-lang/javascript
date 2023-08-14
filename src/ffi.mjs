@@ -179,6 +179,14 @@ export function divide(a, b) {
   return a / b;
 }
 
-export function from(a) {
-  return BigInt(a);
+export function fromInt(a) {
+  return BigInt(a)
+}
+
+export function fromString(a) {
+  try {
+    return new Ok(BigInt(a));
+  } catch (_) {
+    return new Error
+  }
 }
