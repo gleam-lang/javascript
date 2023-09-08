@@ -3,7 +3,7 @@
 ## v0.6.1 - 2023-09-08
 
 - Republished to resolve an error in the package release which caused some
-  modules to be unavailable.
+  modules to be missing from documentation.
 
 ## v0.6.0 - 2023-08-12
 
