@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.7.0 - 2023-11-06
+
+- Updated for Gleam v0.32.0.
+
 ## v0.6.1 - 2023-09-08
 
 - Republished to resolve an error in the package release which caused some
