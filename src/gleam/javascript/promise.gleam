@@ -1,5 +1,5 @@
-import gleam/dynamic.{Dynamic}
-import gleam/javascript/array.{Array}
+import gleam/dynamic.{type Dynamic}
+import gleam/javascript/array.{type Array}
 
 // TODO: docs
 // TODO: labels
