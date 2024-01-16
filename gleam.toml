@@ -1,5 +1,5 @@
 name = "gleam_javascript"
-version = "0.7.0"
+version = "0.7.1"
 licences = ["Apache-2.0"]
 description = "Work with JavaScript types and values in Gleam"
 
@@ -16,7 +16,7 @@ links = [
 typescript_declarations = true
 
 [dependencies]
-gleam_stdlib = "~> 0.19"
+gleam_stdlib = "~> 0.19 or ~> 1.0"
 
 [dev-dependencies]
 gleeunit = "~> 1.0"
