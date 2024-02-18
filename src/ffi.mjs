@@ -127,6 +127,10 @@ export function set_reference(ref, value) {
   return previous;
 }
 
+export function reference_equal(a,b) {
+  return a === b
+}
+
 export function all_promises(...promises) {
   if (promises.length === 1) {
     return Promise.all(promises[0]);
