@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Add `reference_equal` to the `javascript` module.
+
 ## v0.7.1 - 2024-01-16
 
 - Relaxed the version constraint on `gleam_stdlib` to allow v0.x or v1.x.
