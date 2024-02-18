@@ -35,3 +35,6 @@ pub fn update_reference(ref: Reference(a), f: fn(a) -> a) -> a {
   set_reference(ref, f(value))
   value
 }
+
+@external(javascript, "../ffi.mjs", "reference_equal")
+pub fn reference_equal(a: Reference(a), b: Reference(a)) -> Bool
