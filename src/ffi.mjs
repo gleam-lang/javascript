@@ -157,3 +157,44 @@ export function map_get(map, key) {
 export function map_size(map) {
   return map.size;
 }
+
+// math functions for BigInt, also work with normal number values
+export function add(a, b) {
+  return a + b;
+}
+
+export function multiply(a, b) {
+  return a * b;
+}
+
+export function subtract(a, b) {
+  return a - b;
+}
+
+export function modulo(a, b) {
+  return a % b;
+}
+
+export function power(a, b) {
+  return a ** b;
+}
+
+export function divide(a, b) {
+  try {
+    return new Ok(a / b);
+  } catch (_) {
+    return new Error
+  }
+}
+
+export function fromInt(a) {
+  return BigInt(a)
+}
+
+export function fromString(a) {
+  try {
+    return new Ok(BigInt(a));
+  } catch (_) {
+    return new Error
+  }
+}
