@@ -183,14 +183,16 @@ pub fn await6_test() {
 }
 
 pub fn await_array_test() {
-  promise.await_array(array.from_list([
-    promise.resolve(1),
-    promise.resolve(3),
-    promise.resolve(4),
-    promise.resolve(6),
-    promise.resolve(10),
-    promise.resolve(13),
-  ]))
+  promise.await_array(
+    array.from_list([
+      promise.resolve(1),
+      promise.resolve(3),
+      promise.resolve(4),
+      promise.resolve(6),
+      promise.resolve(10),
+      promise.resolve(13),
+    ]),
+  )
   |> promise.tap(fn(x) {
     let assert [1, 3, 4, 6, 10, 13] = array.to_list(x)
   })
