@@ -139,6 +139,14 @@ export function all_promises(...promises) {
   }
 }
 
+export function race_promises(...promises) {
+  if (promises.length === 1) {
+    return Promise.race(promises[0]);
+  } else {
+    return Promise.race(promises);
+  }
+}
+
 export function map_new() {
   return new Map();
 }
