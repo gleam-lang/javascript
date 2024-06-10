@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Renamed ffi file to be scope with project name.
+
 ## v0.10.0 - 2024-06-23
 
 - The `Reference` type has been deprecated.

@@ -15,14 +15,14 @@ pub fn to_list(a: Array(element)) -> List(element)
 ///
 /// Runs in linear time.
 ///
-@external(javascript, "../../ffi.mjs", "toArray")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "toArray")
 pub fn from_list(a: List(element)) -> Array(element)
 
 /// Get the number of elements in the array.
 ///
 /// Runs in constant time.
 ///
-@external(javascript, "../../ffi.mjs", "length")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "length")
 pub fn size(a: Array(element)) -> Int
 
 /// Returns a new array containing only the elements of the first array after
@@ -37,7 +37,7 @@ pub fn size(a: Array(element)) -> Int
 /// from_list([4, 8, 12])
 /// ```
 ///
-@external(javascript, "../../ffi.mjs", "map")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "map")
 pub fn map(a: Array(a), with with: fn(a) -> b) -> Array(b)
 
 /// Reduces a list of elements into a single value by calling a given function
@@ -48,7 +48,7 @@ pub fn map(a: Array(a), with with: fn(a) -> b) -> Array(b)
 ///
 /// Runs in linear time.
 ///
-@external(javascript, "../../ffi.mjs", "reduce")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "reduce")
 pub fn fold(over over: Array(e), from from: a, with with: fn(a, e) -> a) -> a
 
 /// Reduces a list of elements into a single value by calling a given function
@@ -59,7 +59,7 @@ pub fn fold(over over: Array(e), from from: a, with with: fn(a, e) -> a) -> a
 ///
 /// Runs in linear time.
 ///
-@external(javascript, "../../ffi.mjs", "reduceRight")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "reduceRight")
 pub fn fold_right(
   over over: Array(e),
   from from: a,
@@ -80,5 +80,5 @@ pub fn fold_right(
 /// Error(Nil)
 /// ```
 ///
-@external(javascript, "../../ffi.mjs", "index")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "index")
 pub fn get(a: Array(e), b: Int) -> Result(e, Nil)
