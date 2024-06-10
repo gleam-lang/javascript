@@ -28,12 +28,12 @@ pub type Promise(value)
 /// This function is useful for converting code that uses callbacks into code
 /// that uses promises.
 ///
-@external(javascript, "../../ffi.mjs", "newPromise")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "newPromise")
 pub fn new(a: fn(fn(value) -> Nil) -> Nil) -> Promise(value)
 
 /// Create a promise that resolves immediately.
 ///
-@external(javascript, "../../ffi.mjs", "resolve")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "resolve")
 pub fn resolve(a: value) -> Promise(value)
 
 /// If the promise is in an error state then apply a function to convert the
@@ -41,7 +41,7 @@ pub fn resolve(a: value) -> Promise(value)
 ///
 /// This is the equivilent of the `promise.catch` JavaScript method.
 ///
-@external(javascript, "../../ffi.mjs", "rescue")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "rescue")
 pub fn rescue(a: Promise(value), b: fn(Dynamic) -> value) -> Promise(value)
 
 /// Chain a second asynchronous operation onto a promise, so it runs after the
@@ -49,13 +49,13 @@ pub fn rescue(a: Promise(value), b: fn(Dynamic) -> value) -> Promise(value)
 ///
 /// This is the equivilent of the `promise.then` JavaScript method.
 ///
-@external(javascript, "../../ffi.mjs", "then")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "then")
 pub fn await(a: Promise(a), b: fn(a) -> Promise(b)) -> Promise(b)
 
 /// Run a function on the value a promise resolves to, after it has resolved.
 /// The value returned becomes the new value contained by the promise.
 ///
-@external(javascript, "../../ffi.mjs", "map_promise")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "map_promise")
 pub fn map(a: Promise(a), b: fn(a) -> b) -> Promise(b)
 
 /// Run a function on the value a promise resolves to, after it has resolved.
@@ -116,7 +116,7 @@ pub fn try_await(
 ///
 /// This is the equivilent of the `Promise.all` JavaScript static method.
 ///
-@external(javascript, "../../ffi.mjs", "all_promises")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "all_promises")
 pub fn await2(a: Promise(a), b: Promise(b)) -> Promise(#(a, b))
 
 /// Chain an asynchronous operation onto 3 promises, so it runs after the
@@ -124,7 +124,7 @@ pub fn await2(a: Promise(a), b: Promise(b)) -> Promise(#(a, b))
 ///
 /// This is the equivilent of the `Promise.all` JavaScript static method.
 ///
-@external(javascript, "../../ffi.mjs", "all_promises")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "all_promises")
 pub fn await3(
   a: Promise(a),
   b: Promise(b),
@@ -136,7 +136,7 @@ pub fn await3(
 ///
 /// This is the equivilent of the `Promise.all` JavaScript static method.
 ///
-@external(javascript, "../../ffi.mjs", "all_promises")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "all_promises")
 pub fn await4(
   a: Promise(a),
   b: Promise(b),
@@ -149,7 +149,7 @@ pub fn await4(
 ///
 /// This is the equivilent of the `Promise.all` JavaScript static method.
 ///
-@external(javascript, "../../ffi.mjs", "all_promises")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "all_promises")
 pub fn await5(
   a: Promise(a),
   b: Promise(b),
@@ -163,7 +163,7 @@ pub fn await5(
 ///
 /// This is the equivilent of the `Promise.all` JavaScript static method.
 ///
-@external(javascript, "../../ffi.mjs", "all_promises")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "all_promises")
 pub fn await6(
   a: Promise(a),
   b: Promise(b),
@@ -178,7 +178,7 @@ pub fn await6(
 ///
 /// This is the equivilent of the `Promise.all` JavaScript static method.
 ///
-@external(javascript, "../../ffi.mjs", "all_promises")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "all_promises")
 pub fn await_array(a: Array(Promise(a))) -> Promise(Array(a))
 
 /// Chain an asynchronous operation onto an list of promises, so it runs after the
@@ -192,16 +192,16 @@ pub fn await_list(xs: List(Promise(a))) -> Promise(List(a)) {
   |> map(array.to_list)
 }
 
-@external(javascript, "../../ffi.mjs", "all_promises")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "all_promises")
 fn do_await_list(a: List(Promise(a))) -> Promise(Array(a))
 
-@external(javascript, "../../ffi.mjs", "race_promises")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "race_promises")
 pub fn race2(a: Promise(a), b: Promise(a)) -> Promise(a)
 
-@external(javascript, "../../ffi.mjs", "race_promises")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "race_promises")
 pub fn race3(a: Promise(a), b: Promise(a), c: Promise(a)) -> Promise(a)
 
-@external(javascript, "../../ffi.mjs", "race_promises")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "race_promises")
 pub fn race4(
   a: Promise(a),
   b: Promise(a),
@@ -209,7 +209,7 @@ pub fn race4(
   d: Promise(a),
 ) -> Promise(a)
 
-@external(javascript, "../../ffi.mjs", "race_promises")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "race_promises")
 pub fn race5(
   a: Promise(a),
   b: Promise(a),
@@ -218,7 +218,7 @@ pub fn race5(
   e: Promise(a),
 ) -> Promise(a)
 
-@external(javascript, "../../ffi.mjs", "race_promises")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "race_promises")
 pub fn race6(
   a: Promise(a),
   b: Promise(a),
@@ -228,8 +228,8 @@ pub fn race6(
   f: Promise(a),
 ) -> Promise(a)
 
-@external(javascript, "../../ffi.mjs", "race_promises")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "race_promises")
 pub fn race_list(a: List(Promise(a))) -> Promise(a)
 
-@external(javascript, "../../ffi.mjs", "race_promises")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "race_promises")
 pub fn race_array(a: Array(Promise(a))) -> Promise(a)
