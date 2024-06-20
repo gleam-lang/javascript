@@ -1,4 +1,3 @@
-import gleam/io
 import gleam/javascript.{ObjectType}
 import gleam/javascript/array
 import gleam/javascript/promise.{type Promise}
