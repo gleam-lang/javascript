@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.9.0 - 2024-06-20
+
+- The `promise` module gains the `race2`, `race3`, `race4`, `race5`, `race6`,
+  `race_list` and `race_array` functions.
+
 ## v0.8.0 - 2024-02-22
 
 - Add `reference_equal` to the `javascript` module.
