@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- The `Reference` type has been deprecated.
+
 ## v0.9.0 - 2024-06-20
 
 - The `promise` module gains the `race2`, `race3`, `race4`, `race5`, `race6`,
