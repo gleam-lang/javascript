@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v0.10.0 - 2024-06-23
 
 - The `Reference` type has been deprecated.
 
