@@ -1,8 +1,8 @@
 # Changelog
 
-## Unreleased
+## v0.11.0 - 2024-06-26
 
-- Renamed ffi file to be scope with project name.
+- Renamed FFI file to be scope with project name. No external facing changes.
 
 ## v0.10.0 - 2024-06-23
 

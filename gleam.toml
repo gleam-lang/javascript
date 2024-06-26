@@ -1,5 +1,5 @@
 name = "gleam_javascript"
-version = "0.10.0"
+version = "0.11.0"
 licences = ["Apache-2.0"]
 description = "Work with JavaScript types and values in Gleam"
 
