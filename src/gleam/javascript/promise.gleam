@@ -49,7 +49,7 @@ pub fn rescue(a: Promise(value), b: fn(Dynamic) -> value) -> Promise(value)
 ///
 /// This is the equivilent of the `promise.then` JavaScript method.
 ///
-@external(javascript, "../../gleam_javascript_ffi.mjs", "then")
+@external(javascript, "../../gleam_javascript_ffi.mjs", "then_await")
 pub fn await(a: Promise(a), b: fn(a) -> Promise(b)) -> Promise(b)
 
 /// Run a function on the value a promise resolves to, after it has resolved.

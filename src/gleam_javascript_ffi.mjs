@@ -93,7 +93,7 @@ export function resolve(value) {
   return Promise.resolve(PromiseLayer.wrap(value));
 }
 
-export function then(promise, fn) {
+export function then_await(promise, fn) {
   return promise.then((value) => fn(PromiseLayer.unwrap(value)));
 }
 
@@ -127,7 +127,7 @@ export function set_reference(ref, value) {
   return previous;
 }
 
-export function reference_equal(a,b) {
+export function reference_equal(a, b) {
   return a === b
 }
 
