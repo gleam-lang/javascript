@@ -44,29 +44,3 @@ pub fn type_of(a: value) -> TypeOf
 ///
 @external(javascript, "../gleam_javascript_ffi.mjs", "get_symbol")
 pub fn get_symbol(a: String) -> Symbol
-
-@deprecated("The Reference type is being removed from this packge")
-pub type Reference(value)
-
-@deprecated("The Reference type is being removed from this packge")
-@external(javascript, "../gleam_javascript_ffi.mjs", "dereference")
-pub fn dereference(a: Reference(a)) -> a
-
-@deprecated("The Reference type is being removed from this packge")
-@external(javascript, "../gleam_javascript_ffi.mjs", "set_reference")
-pub fn set_reference(a: Reference(a), b: a) -> a
-
-@deprecated("The Reference type is being removed from this packge")
-@external(javascript, "../gleam_javascript_ffi.mjs", "make_reference")
-pub fn make_reference(a: a) -> Reference(a)
-
-@deprecated("The Reference type is being removed from this packge")
-pub fn update_reference(ref: Reference(a), f: fn(a) -> a) -> a {
-  let value = dereference(ref)
-  set_reference(ref, f(value))
-  value
-}
-
-@deprecated("The Reference type is being removed from this packge")
-@external(javascript, "../gleam_javascript_ffi.mjs", "reference_equal")
-pub fn reference_equal(a: Reference(a), b: Reference(a)) -> Bool

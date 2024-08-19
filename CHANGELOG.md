@@ -3,6 +3,7 @@
 ## v0.12.0 - 2024-08-19
 
 - Fixed a bug where `array.to_list` could produce incorrect results.
+- The deprecated reference type and functions have been removed.
 
 ## v0.11.0 - 2024-06-26
 
