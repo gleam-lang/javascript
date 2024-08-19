@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.12.0 - 2024-08-19
+
+- Fixed a bug where `array.to_list` could produce incorrect results.
+
 ## v0.11.0 - 2024-06-26
 
 - Renamed FFI file to be scope with project name. No external facing changes.

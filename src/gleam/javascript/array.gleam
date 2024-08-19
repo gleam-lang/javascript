@@ -8,8 +8,9 @@ pub type Array(element)
 ///
 /// Runs in linear time.
 ///
-@external(javascript, "../../gleam.mjs", "toList")
-pub fn to_list(a: Array(element)) -> List(element)
+pub fn to_list(items: Array(element)) -> List(element) {
+  fold_right(over: items, from: [], with: fn(list, item) { [item, ..list] })
+}
 
 /// Convert a Gleam list to a JavaScript array.
 ///
