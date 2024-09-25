@@ -233,3 +233,9 @@ pub fn race_list(a: List(Promise(a))) -> Promise(a)
 
 @external(javascript, "../../gleam_javascript_ffi.mjs", "race_promises")
 pub fn race_array(a: Array(Promise(a))) -> Promise(a)
+
+/// Create a promise that will resolve after a delay.
+/// The delay is specified in milliseconds
+///
+@external(javascript, "../../gleam_javascript_ffi.mjs", "wait")
+pub fn wait(delay: Int) -> Promise(Nil)
