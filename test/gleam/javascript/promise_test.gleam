@@ -296,3 +296,9 @@ pub fn race_array_test() {
     let assert 1 = x
   })
 }
+
+pub fn promise_wait_test() {
+  promise.tap(promise.wait(100), fn(x) {
+    let Nil = x
+  })
+}
