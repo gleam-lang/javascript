@@ -19,6 +19,25 @@ pub fn new_does_not_collapse_nested_promise_test() {
   })
 }
 
+pub fn start_promise_test() {
+  let #(p, resolve) = promise.start()
+  promise.tap(p, fn(value) {
+    let assert 1 = value
+  })
+  resolve(1)
+}
+
+pub fn start_does_not_collapse_nested_promise_test() {
+  let #(p, resolve) = promise.start()
+  promise.tap(p, fn(value) {
+    // If the `Promise(Promise(Int))` collapsed into `Promise(Int)` (as they
+    // do for normal JS promises) then this would fail as the value would be the
+    // int value `1`.
+    let assert ObjectType = javascript.type_of(value)
+  })
+  resolve(promise.resolve(1))
+}
+
 pub fn map_does_not_collapse_nested_promise_test() -> Promise(Promise(Int)) {
   promise.resolve(1)
   |> promise.map(promise.resolve)
