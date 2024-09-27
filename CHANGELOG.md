@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Add `wait` to `promise` module.
+
 ## v0.12.0 - 2024-08-19
 
 - Fixed a bug where `array.to_list` could produce incorrect results.
