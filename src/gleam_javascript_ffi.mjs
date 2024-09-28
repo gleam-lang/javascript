@@ -115,6 +115,12 @@ export function rescue(promise, fn) {
   return promise.catch((error) => fn(error));
 }
 
+export function wait(delay) {
+  return new Promise((resolve) => {
+    globalThis.setTimeout(resolve, delay);
+  })
+}
+
 export function all_promises(...promises) {
   if (promises.length === 1) {
     return Promise.all(promises[0]);
