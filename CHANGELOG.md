@@ -1,9 +1,8 @@
 # Changelog
 
-## Unreleased
+## v0.13.0 - 2024-08-30
 
-- Add `start` to the `promise` module.
-- Add `wait` to `promise` module.
+- Added `start` and `wait` functions to the `promise` module.
 
 ## v0.12.0 - 2024-08-19
 
