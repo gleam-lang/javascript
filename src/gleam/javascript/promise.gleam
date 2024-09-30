@@ -31,6 +31,15 @@ pub type Promise(value)
 @external(javascript, "../../gleam_javascript_ffi.mjs", "newPromise")
 pub fn new(a: fn(fn(value) -> Nil) -> Nil) -> Promise(value)
 
+/// Create a new promise and resolve function. The first time the resolve function
+/// is called the promise resolves with that value.
+///
+/// This function is useful in cases where a reference to the promise and resolver
+/// are needed.
+///
+@external(javascript, "../../gleam_javascript_ffi.mjs", "start_promise")
+pub fn start() -> #(Promise(a), fn(a) -> Nil)
+
 /// Create a promise that resolves immediately.
 ///
 @external(javascript, "../../gleam_javascript_ffi.mjs", "resolve")

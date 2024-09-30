@@ -89,6 +89,14 @@ export function newPromise(executor) {
   );
 }
 
+export function start_promise() {
+  let resolve;
+  const promise = new Promise((r) => {
+    resolve = (value) => {r(PromiseLayer.wrap(value))}
+  })
+  return [promise, resolve]
+}
+
 export function resolve(value) {
   return Promise.resolve(PromiseLayer.wrap(value));
 }

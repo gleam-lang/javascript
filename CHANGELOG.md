@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Add `start` to the `promise` module.
 - Add `wait` to `promise` module.
 
 ## v0.12.0 - 2024-08-19
