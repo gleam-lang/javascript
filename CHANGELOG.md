@@ -2,6 +2,7 @@
 
 ## v1.0.0 - 2025-01-03
 
+- The symbol type and functions have been moved to a new `symbol` module.
 - Removed the `raceN` and `awaitN` functions from the `promise` module.
 - Removed the `map` module.
 - Removed the `type_of` function and `TypeOf` type from the `javascript` module.
