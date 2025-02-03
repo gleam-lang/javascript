@@ -1,6 +1,6 @@
-import gleam/javascript.{ObjectType}
 import gleam/javascript/array
 import gleam/javascript/promise.{type Promise}
+import helper.{ObjectType}
 
 pub fn new_promise_test() {
   promise.new(fn(resolve) { resolve(1) })
@@ -15,7 +15,7 @@ pub fn new_does_not_collapse_nested_promise_test() {
     // If the `Promise(Promise(Int))` collapsed into `Promise(Int)` (as they
     // do for normal JS promises) then this would fail as the value would be the
     // int value `1`.
-    let assert ObjectType = javascript.type_of(value)
+    let assert ObjectType = helper.type_of(value)
   })
 }
 
@@ -33,7 +33,7 @@ pub fn start_does_not_collapse_nested_promise_test() {
     // If the `Promise(Promise(Int))` collapsed into `Promise(Int)` (as they
     // do for normal JS promises) then this would fail as the value would be the
     // int value `1`.
-    let assert ObjectType = javascript.type_of(value)
+    let assert ObjectType = helper.type_of(value)
   })
   resolve(promise.resolve(1))
 }
@@ -45,7 +45,7 @@ pub fn map_does_not_collapse_nested_promise_test() -> Promise(Promise(Int)) {
     // If the `Promise(Promise(Int))` collapsed into `Promise(Int)` (as they
     // do for normal JS promises) then this would fail as the value would be the
     // int value `1`.
-    let assert ObjectType = javascript.type_of(value)
+    let assert ObjectType = helper.type_of(value)
   })
 }
 

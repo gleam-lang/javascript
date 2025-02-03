@@ -1,15 +1,4 @@
 import { Ok, Error } from "./gleam.mjs";
-import {
-  UndefinedType,
-  ObjectType,
-  BooleanType,
-  NumberType,
-  BigIntType,
-  StringType,
-  SymbolType,
-  FunctionType,
-} from "./gleam/javascript.mjs";
-
 export function toArray(list) {
   return list.toArray();
 }
@@ -36,29 +25,6 @@ export function index(thing, index) {
 
 export function object_from_entries(entries) {
   return Object.fromEntries(entries);
-}
-
-export function type_of(value) {
-  switch (typeof value) {
-    case "undefined":
-      return new UndefinedType();
-    case "object":
-      return new ObjectType();
-    case "boolean":
-      return new BooleanType();
-    case "number":
-      return new NumberType();
-    case "bigint":
-      return new BigIntType();
-    case "string":
-      return new StringType();
-    case "symbol":
-      return new SymbolType();
-    case "function":
-      return new FunctionType();
-    default:
-      throw new globalThis.Error(`Unexpected typeof ${typeof value}`);
-  }
 }
 
 export function get_symbol(name) {
@@ -92,9 +58,11 @@ export function newPromise(executor) {
 export function start_promise() {
   let resolve;
   const promise = new Promise((r) => {
-    resolve = (value) => {r(PromiseLayer.wrap(value))}
-  })
-  return [promise, resolve]
+    resolve = (value) => {
+      r(PromiseLayer.wrap(value));
+    };
+  });
+  return [promise, resolve];
 }
 
 export function resolve(value) {
@@ -118,7 +86,7 @@ export function rescue(promise, fn) {
 export function wait(delay) {
   return new Promise((resolve) => {
     globalThis.setTimeout(resolve, delay);
-  })
+  });
 }
 
 export function all_promises(...promises) {
