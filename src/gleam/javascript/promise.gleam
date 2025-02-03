@@ -120,68 +120,6 @@ pub fn try_await(
   })
 }
 
-/// Chain an asynchronous operation onto 2 promises, so it runs after the
-/// promises have resolved.
-///
-/// This is the equivilent of the `Promise.all` JavaScript static method.
-///
-@external(javascript, "../../gleam_javascript_ffi.mjs", "all_promises")
-pub fn await2(a: Promise(a), b: Promise(b)) -> Promise(#(a, b))
-
-/// Chain an asynchronous operation onto 3 promises, so it runs after the
-/// promises have resolved.
-///
-/// This is the equivilent of the `Promise.all` JavaScript static method.
-///
-@external(javascript, "../../gleam_javascript_ffi.mjs", "all_promises")
-pub fn await3(
-  a: Promise(a),
-  b: Promise(b),
-  c: Promise(c),
-) -> Promise(#(a, b, c))
-
-/// Chain an asynchronous operation onto 4 promises, so it runs after the
-/// promises have resolved.
-///
-/// This is the equivilent of the `Promise.all` JavaScript static method.
-///
-@external(javascript, "../../gleam_javascript_ffi.mjs", "all_promises")
-pub fn await4(
-  a: Promise(a),
-  b: Promise(b),
-  c: Promise(c),
-  d: Promise(d),
-) -> Promise(#(a, b, c, d))
-
-/// Chain an asynchronous operation onto 5 promises, so it runs after the
-/// promises have resolved.
-///
-/// This is the equivilent of the `Promise.all` JavaScript static method.
-///
-@external(javascript, "../../gleam_javascript_ffi.mjs", "all_promises")
-pub fn await5(
-  a: Promise(a),
-  b: Promise(b),
-  c: Promise(c),
-  d: Promise(d),
-  e: Promise(e),
-) -> Promise(#(a, b, c, d, e))
-
-/// Chain an asynchronous operation onto 6 promises, so it runs after the
-/// promises have resolved.
-///
-/// This is the equivilent of the `Promise.all` JavaScript static method.
-///
-@external(javascript, "../../gleam_javascript_ffi.mjs", "all_promises")
-pub fn await6(
-  a: Promise(a),
-  b: Promise(b),
-  c: Promise(c),
-  d: Promise(d),
-  e: Promise(e),
-  f: Promise(f),
-) -> Promise(#(a, b, c, d, e, f))
-
 /// Chain an asynchronous operation onto an array of promises, so it runs after the
 /// promises have resolved.
 ///

@@ -2,7 +2,7 @@
 
 ## v1.0.0 - 2025-01-03
 
-- Removed the `raceN` functions from the `promise` module.
+- Removed the `raceN` and `awaitN` functions from the `promise` module.
 - Removed the `map` module.
 
 ## v0.13.0 - 2024-08-30
