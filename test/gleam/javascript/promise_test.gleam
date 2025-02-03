@@ -235,63 +235,6 @@ fn never_resolving_promise() {
   promise.new(fn(_) { Nil })
 }
 
-pub fn race2_test() {
-  promise.race2(never_resolving_promise(), promise.resolve(1))
-  |> promise.tap(fn(x) {
-    let assert 1 = x
-  })
-}
-
-pub fn race3_test() {
-  promise.race3(
-    never_resolving_promise(),
-    promise.resolve(1),
-    never_resolving_promise(),
-  )
-  |> promise.tap(fn(x) {
-    let assert 1 = x
-  })
-}
-
-pub fn race4_test() {
-  promise.race4(
-    never_resolving_promise(),
-    never_resolving_promise(),
-    promise.resolve(1),
-    never_resolving_promise(),
-  )
-  |> promise.tap(fn(x) {
-    let assert 1 = x
-  })
-}
-
-pub fn race5_test() {
-  promise.race5(
-    never_resolving_promise(),
-    never_resolving_promise(),
-    promise.resolve(1),
-    never_resolving_promise(),
-    never_resolving_promise(),
-  )
-  |> promise.tap(fn(x) {
-    let assert 1 = x
-  })
-}
-
-pub fn race6_test() {
-  promise.race6(
-    never_resolving_promise(),
-    never_resolving_promise(),
-    promise.resolve(1),
-    never_resolving_promise(),
-    never_resolving_promise(),
-    never_resolving_promise(),
-  )
-  |> promise.tap(fn(x) {
-    let assert 1 = x
-  })
-}
-
 pub fn race_list_test() {
   promise.race_list([
     never_resolving_promise(),

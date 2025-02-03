@@ -205,39 +205,6 @@ pub fn await_list(xs: List(Promise(a))) -> Promise(List(a)) {
 fn do_await_list(a: List(Promise(a))) -> Promise(Array(a))
 
 @external(javascript, "../../gleam_javascript_ffi.mjs", "race_promises")
-pub fn race2(a: Promise(a), b: Promise(a)) -> Promise(a)
-
-@external(javascript, "../../gleam_javascript_ffi.mjs", "race_promises")
-pub fn race3(a: Promise(a), b: Promise(a), c: Promise(a)) -> Promise(a)
-
-@external(javascript, "../../gleam_javascript_ffi.mjs", "race_promises")
-pub fn race4(
-  a: Promise(a),
-  b: Promise(a),
-  c: Promise(a),
-  d: Promise(a),
-) -> Promise(a)
-
-@external(javascript, "../../gleam_javascript_ffi.mjs", "race_promises")
-pub fn race5(
-  a: Promise(a),
-  b: Promise(a),
-  c: Promise(a),
-  d: Promise(a),
-  e: Promise(a),
-) -> Promise(a)
-
-@external(javascript, "../../gleam_javascript_ffi.mjs", "race_promises")
-pub fn race6(
-  a: Promise(a),
-  b: Promise(a),
-  c: Promise(a),
-  d: Promise(a),
-  e: Promise(a),
-  f: Promise(a),
-) -> Promise(a)
-
-@external(javascript, "../../gleam_javascript_ffi.mjs", "race_promises")
 pub fn race_list(a: List(Promise(a))) -> Promise(a)
 
 @external(javascript, "../../gleam_javascript_ffi.mjs", "race_promises")
