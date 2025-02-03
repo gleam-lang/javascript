@@ -27,8 +27,16 @@ export function object_from_entries(entries) {
   return Object.fromEntries(entries);
 }
 
+export function new_symbol(name) {
+  return Symbol(name);
+}
 export function get_symbol(name) {
   return Symbol.for(name);
+}
+export function symbol_description(symbol) {
+  const description = symbol.description;
+  if (symbol.description === undefined) return new Error(undefined);
+  return new Ok(description);
 }
 
 // A wrapper around a promise to prevent `Promise<Promise<T>>` collapsing into
