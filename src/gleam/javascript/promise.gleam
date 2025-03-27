@@ -7,16 +7,16 @@ import gleam/javascript/array.{type Array}
 ///
 /// This library assumes you have some familiarity with JavaScript promises. If
 /// you are not then you may want to take the time to learn about them outside of
-/// Gleam. 
+/// Gleam.
 ///
 /// The Gleam promise type is generic over the type of value it resolves. It is
 /// not generic over the error type as any Gleam panic or JavaScript exception
-/// could alter the error value in an way that undermines the type, making it 
+/// could alter the error value in an way that undermines the type, making it
 /// unsound and untypable.
 /// If you want to represent success and failure with promises use a Gleam
 /// `Result` inside of a promise.
 ///
-/// For further information view the MDN documentation: 
+/// For further information view the MDN documentation:
 /// <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise>
 ///
 pub type Promise(value)
@@ -123,7 +123,8 @@ pub fn try_await(
 /// Chain an asynchronous operation onto an array of promises, so it runs after the
 /// promises have resolved.
 ///
-/// This is the equivilent of the `Promise.all` JavaScript static method.
+/// This is the equivilent of the [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
+/// JavaScript static method.
 ///
 @external(javascript, "../../gleam_javascript_ffi.mjs", "all_promises")
 pub fn await_array(a: Array(Promise(a))) -> Promise(Array(a))
@@ -131,7 +132,8 @@ pub fn await_array(a: Array(Promise(a))) -> Promise(Array(a))
 /// Chain an asynchronous operation onto an list of promises, so it runs after the
 /// promises have resolved.
 ///
-/// This is the equivilent of the `Promise.all` JavaScript static method.
+/// This is the equivilent of the [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
+/// JavaScript static method.
 ///
 pub fn await_list(xs: List(Promise(a))) -> Promise(List(a)) {
   xs
@@ -142,9 +144,21 @@ pub fn await_list(xs: List(Promise(a))) -> Promise(List(a)) {
 @external(javascript, "../../gleam_javascript_ffi.mjs", "all_promises")
 fn do_await_list(a: List(Promise(a))) -> Promise(Array(a))
 
+/// Wait for the first promise to settle. Any promise settling after the
+/// first one is ignored.
+///
+/// This is the equivalent of the [`Promise.race`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race)
+/// JavaScript static method.
+///
 @external(javascript, "../../gleam_javascript_ffi.mjs", "race_promises")
 pub fn race_list(a: List(Promise(a))) -> Promise(a)
 
+/// Wait for the first promise to settleAny promise settling after the
+/// first one is ignored.
+///
+/// This is the equivalent of the [`Promise.race`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race)
+/// JavaScript static method.
+///
 @external(javascript, "../../gleam_javascript_ffi.mjs", "race_promises")
 pub fn race_array(a: Array(Promise(a))) -> Promise(a)
 
