@@ -145,3 +145,7 @@ export async function settled_await(promises) {
     }
   });
 }
+
+export function any_await(promises) {
+  return Promise.any(promises);
+}

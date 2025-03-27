@@ -180,6 +180,28 @@ pub fn settled_list(xs: List(Promise(a))) -> Promise(List(Settled(a))) {
 @external(javascript, "../../gleam_javascript_ffi.mjs", "settled_await")
 fn do_settled_list(a: List(Promise(a))) -> Promise(Array(Settled(a)))
 
+/// Chain an asynchronous operation onto a list of promises, so it runs
+/// after one promise have successfully ended. `any_array` throws an error
+/// when all promises have failed, or when there's no promises at all in the
+/// array.
+///
+/// This is the equivilent of [`Promise.any`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise/any)
+/// JavaScript method.
+///
+@external(javascript, "../../gleam_javascript_ffi.mjs", "any_await")
+pub fn any_array(xs: Array(Promise(a))) -> Promise(a)
+
+/// Chain an asynchronous operation onto a list of promises, so it runs
+/// after one promise have successfully ended. `any_list` throws an error
+/// when all promises have failed, or when there's no promises at all in the
+/// list.
+///
+/// This is the equivilent of [`Promise.any`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise/any)
+/// JavaScript method.
+///
+@external(javascript, "../../gleam_javascript_ffi.mjs", "any_await")
+pub fn any_list(xs: List(Promise(a))) -> Promise(a)
+
 @external(javascript, "../../gleam_javascript_ffi.mjs", "all_promises")
 fn do_await_list(a: List(Promise(a))) -> Promise(Array(a))
 

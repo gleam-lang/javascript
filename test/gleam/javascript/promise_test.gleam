@@ -1,3 +1,4 @@
+import gleam/dynamic/decode
 import gleam/javascript/array
 import gleam/javascript/promise.{type Promise}
 import helper.{ObjectType}
@@ -248,5 +249,67 @@ pub fn settled_list_test() {
       promise.Rejected(_),
       promise.Fulfilled(200),
     ] = x
+  })
+}
+
+pub fn any_array_test() {
+  promise.any_array(
+    array.from_list([
+      never_resolving_promise(),
+      promise.resolve(1),
+      never_resolving_promise(),
+      promise.wait(100) |> promise.map(fn(_) { 2 }),
+    ]),
+  )
+  |> promise.tap(fn(x) {
+    let assert 1 = x
+  })
+}
+
+pub fn any_array_fail_test() {
+  promise.any_array(
+    array.from_list([
+      promise.resolve(1)
+      |> promise.map(fn(_) {
+        let assert 1 = 2
+      }),
+    ]),
+  )
+  |> promise.rescue(fn(dyn) {
+    let content = decode.run(dyn, decode.at(["name"], decode.string))
+    let assert Ok("AggregateError") = content
+    10
+  })
+  |> promise.tap(fn(x) {
+    let assert 10 = x
+  })
+}
+
+pub fn any_list_test() {
+  promise.any_list([
+    never_resolving_promise(),
+    promise.resolve(1),
+    never_resolving_promise(),
+    promise.wait(100) |> promise.map(fn(_) { 2 }),
+  ])
+  |> promise.tap(fn(x) {
+    let assert 1 = x
+  })
+}
+
+pub fn any_list_fail_test() {
+  promise.any_list([
+    promise.resolve(1)
+    |> promise.map(fn(_) {
+      let assert 1 = 2
+    }),
+  ])
+  |> promise.rescue(fn(dyn) {
+    let content = decode.run(dyn, decode.at(["name"], decode.string))
+    let assert Ok("AggregateError") = content
+    10
+  })
+  |> promise.tap(fn(x) {
+    let assert 10 = x
   })
 }
