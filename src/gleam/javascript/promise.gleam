@@ -21,6 +21,23 @@ import gleam/javascript/array.{type Array}
 ///
 pub type Promise(value)
 
+/// `Settled` represents the state of a `Promise`, after it has run and settled.
+/// A promise can be either successful, or failing. In case the promise
+/// succeeded, `Fulfilled` is returned, while `Rejected` is returned when the
+/// promise failed.
+///
+/// It's impossible to read the state of a promise per se, except when using
+/// [`settled_array`](#settled_array) or [`settled_list`](#settled_list).
+///
+/// Further information can be found
+/// [on MDN, on `Promise.allSettled`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled)
+/// documentation.
+///
+pub type Settled(value) {
+  Fulfilled(value)
+  Rejected(Dynamic)
+}
+
 /// Create a new promise from a callback function. The callback function itself
 /// takes a second function as an argument, and when that second function is
 /// called with a value then the promise resolves with that value.
@@ -138,6 +155,30 @@ pub fn await_list(xs: List(Promise(a))) -> Promise(List(a)) {
   |> do_await_list
   |> map(array.to_list)
 }
+
+/// Chain an asynchronous operation onto a list of promises, so it runs
+/// after all promises have ended, whether they succeeded or not.
+///
+/// This is the equivilent of [`Promise.allSettled`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled)
+/// JavaScript method.
+///
+@external(javascript, "../../gleam_javascript_ffi.mjs", "settled_await")
+pub fn settled_array(xs: Array(Promise(a))) -> Promise(Array(Settled(a)))
+
+/// Chain an asynchronous operation onto a list of promises, so it runs
+/// after all promises have ended, whether they succeeded or not.
+///
+/// This is the equivilent of [`Promise.allSettled`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled)
+/// JavaScript method.
+///
+pub fn settled_list(xs: List(Promise(a))) -> Promise(List(Settled(a))) {
+  xs
+  |> do_settled_list
+  |> map(array.to_list)
+}
+
+@external(javascript, "../../gleam_javascript_ffi.mjs", "settled_await")
+fn do_settled_list(a: List(Promise(a))) -> Promise(Array(Settled(a)))
 
 @external(javascript, "../../gleam_javascript_ffi.mjs", "all_promises")
 fn do_await_list(a: List(Promise(a))) -> Promise(Array(a))

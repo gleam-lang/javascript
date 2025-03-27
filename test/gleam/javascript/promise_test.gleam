@@ -211,3 +211,42 @@ pub fn promise_wait_test() {
     let Nil = x
   })
 }
+
+pub fn settled_array_test() {
+  promise.settled_array(
+    array.from_list([
+      promise.resolve(100),
+      promise.resolve(1)
+        |> promise.map(fn(_) {
+          let assert 1 = 2
+        }),
+      promise.resolve(200),
+    ]),
+  )
+  |> promise.tap(fn(x) {
+    let x = array.to_list(x)
+    let assert [
+      promise.Fulfilled(100),
+      promise.Rejected(_),
+      promise.Fulfilled(200),
+    ] = x
+  })
+}
+
+pub fn settled_list_test() {
+  promise.settled_list([
+    promise.resolve(100),
+    promise.resolve(1)
+      |> promise.map(fn(_) {
+        let assert 1 = 2
+      }),
+    promise.resolve(200),
+  ])
+  |> promise.tap(fn(x) {
+    let assert [
+      promise.Fulfilled(100),
+      promise.Rejected(_),
+      promise.Fulfilled(200),
+    ] = x
+  })
+}

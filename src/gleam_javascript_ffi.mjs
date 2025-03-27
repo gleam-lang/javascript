@@ -1,4 +1,6 @@
 import { Ok, Error } from "./gleam.mjs";
+import * as $promises from "./gleam/javascript/promise.mjs";
+
 export function toArray(list) {
   return list.toArray();
 }
@@ -130,4 +132,16 @@ export function map_get(map, key) {
 
 export function map_size(map) {
   return map.size;
+}
+
+export async function settled_await(promises) {
+  const result = await Promise.allSettled(promises);
+  return result.map((res) => {
+    switch (res.status) {
+      case "fulfilled":
+        return new $promises.Fulfilled(res.value);
+      case "rejected":
+        return new $promises.Rejected(res.reason);
+    }
+  });
 }
