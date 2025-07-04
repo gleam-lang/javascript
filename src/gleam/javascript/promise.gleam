@@ -83,7 +83,7 @@ pub fn tap(promise: Promise(a), callback: fn(a) -> b) -> Promise(a) {
 /// The function is only called if the value is `Ok`, and the returned becomes
 /// the new value contained by the promise.
 ///
-/// This is a convenience functin that combines the `map` function with `result.try`.
+/// This is a convenience function that combines the `map` function with `result.try`.
 ///
 pub fn map_try(
   promise: Promise(Result(a, e)),
@@ -104,7 +104,7 @@ pub fn map_try(
 /// The function is only called if the value is `Ok`, and the returned becomes
 /// the new value contained by the promise.
 ///
-/// This is a convenience functin that combines the `await` function with
+/// This is a convenience function that combines the `await` function with
 /// `result.try`.
 ///
 pub fn try_await(
