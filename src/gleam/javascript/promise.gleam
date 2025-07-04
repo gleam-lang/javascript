@@ -48,7 +48,7 @@ pub fn resolve(a: value) -> Promise(value)
 /// If the promise is in an error state then apply a function to convert the
 /// error value back into valid value, making the promise healthy again.
 ///
-/// This is the equivilent of the `promise.catch` JavaScript method.
+/// This is the equivalent of the `promise.catch` JavaScript method.
 ///
 @external(javascript, "../../gleam_javascript_ffi.mjs", "rescue")
 pub fn rescue(a: Promise(value), b: fn(Dynamic) -> value) -> Promise(value)
@@ -56,7 +56,7 @@ pub fn rescue(a: Promise(value), b: fn(Dynamic) -> value) -> Promise(value)
 /// Chain a second asynchronous operation onto a promise, so it runs after the
 /// promise has resolved.
 ///
-/// This is the equivilent of the `promise.then` JavaScript method.
+/// This is the equivalent of the `promise.then` JavaScript method.
 ///
 @external(javascript, "../../gleam_javascript_ffi.mjs", "then_await")
 pub fn await(a: Promise(a), b: fn(a) -> Promise(b)) -> Promise(b)
@@ -123,7 +123,7 @@ pub fn try_await(
 /// Chain an asynchronous operation onto an array of promises, so it runs after the
 /// promises have resolved.
 ///
-/// This is the equivilent of the [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
+/// This is the equivalent of the [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
 /// JavaScript static method.
 ///
 @external(javascript, "../../gleam_javascript_ffi.mjs", "all_promises")
@@ -132,7 +132,7 @@ pub fn await_array(a: Array(Promise(a))) -> Promise(Array(a))
 /// Chain an asynchronous operation onto an list of promises, so it runs after the
 /// promises have resolved.
 ///
-/// This is the equivilent of the [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
+/// This is the equivalent of the [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
 /// JavaScript static method.
 ///
 pub fn await_list(xs: List(Promise(a))) -> Promise(List(a)) {
