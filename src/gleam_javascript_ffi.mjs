@@ -1,4 +1,4 @@
-import { Ok, Error } from "./gleam.mjs";
+import { Result$Ok, Result$Error } from "./gleam.mjs";
 export function toArray(list) {
   return list.toArray();
 }
@@ -20,7 +20,7 @@ export function reduceRight(thing, acc, fn) {
 }
 
 export function index(thing, index) {
-  return index in thing ? new Ok(thing[index]) : new Error(undefined);
+  return index in thing ? Result$Ok(thing[index]) : Result$Error(undefined);
 }
 
 export function object_from_entries(entries) {
@@ -35,8 +35,8 @@ export function get_symbol(name) {
 }
 export function symbol_description(symbol) {
   const description = symbol.description;
-  if (symbol.description === undefined) return new Error(undefined);
-  return new Ok(description);
+  if (symbol.description === undefined) return Result$Error(undefined);
+  return Result$Ok(description);
 }
 
 // A wrapper around a promise to prevent `Promise<Promise<T>>` collapsing into
@@ -123,9 +123,9 @@ export function map_set(map, key, value) {
 
 export function map_get(map, key) {
   if (map.has(key)) {
-    return new Ok(map.get(key));
+    return Result$Ok(map.get(key));
   }
-  return new Error(undefined);
+  return Result$Error(undefined);
 }
 
 export function map_size(map) {

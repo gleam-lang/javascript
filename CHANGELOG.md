@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Updated for current Gleam ffi.
+
 ## v1.0.0 - 2025-01-03
 
 - The symbol type and functions have been moved to a new `symbol` module.
