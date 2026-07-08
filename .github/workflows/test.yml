@@ -10,13 +10,13 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: erlef/setup-beam@v1
         with:
           otp-version: false
-          gleam-version: "1.0.0-rc2"
-      - uses: actions/setup-node@v2
+          gleam-version: "1.14.0"
+      - uses: actions/setup-node@v6
         with:
-          node-version: '16'
-      - run: gleam format --check src test
+          node-version: '26'
       - run: gleam test
+      - run: gleam format --check src test
