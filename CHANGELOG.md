@@ -1,8 +1,8 @@
 # Changelog
 
-## Unreleased
+## v1.0.1 - 2026-07-09
 
-- Updated for current Gleam ffi.
+- Updated for Gleam FFI APIs.
 
 ## v1.0.0 - 2025-01-03
 
