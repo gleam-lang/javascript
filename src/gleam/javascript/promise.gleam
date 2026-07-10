@@ -120,6 +120,26 @@ pub fn try_await(
   })
 }
 
+/// Run a promise returning function on the value of a result, returning a
+/// promise.
+///
+/// The function is only called if the value is `Ok`, and the returned promise
+/// becomes the new value. If the result is `Error`, the error is returned
+/// wrapped in a resolved promise.
+///
+/// This is a convenience function for when you have a synchronous `Result` and
+/// want to chain into an asynchronous operation without first lifting the
+/// result into a promise.
+pub fn try_sync(
+  result: Result(a, b),
+  then: fn(a) -> Promise(Result(c, b)),
+) -> Promise(Result(c, b)) {
+  case result {
+    Ok(value) -> then(value)
+    Error(reason) -> resolve(Error(reason))
+  }
+}
+
 /// Chain an asynchronous operation onto an array of promises, so it runs after the
 /// promises have resolved.
 ///

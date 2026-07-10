@@ -129,6 +129,30 @@ pub fn try_await_error_test() -> Promise(Result(Int, Int)) {
   })
 }
 
+pub fn try_sync_ok_ok_test() -> Promise(Result(Int, Int)) {
+  Ok(1)
+  |> promise.try_sync(fn(a) { promise.resolve(Ok(a + 1)) })
+  |> promise.tap(fn(a) {
+    let assert Ok(2) = a
+  })
+}
+
+pub fn try_sync_ok_error_test() -> Promise(Result(Int, Int)) {
+  Ok(1)
+  |> promise.try_sync(fn(a) { promise.resolve(Error(a + 1)) })
+  |> promise.tap(fn(a) {
+    let assert Error(2) = a
+  })
+}
+
+pub fn try_sync_error_test() -> Promise(Result(Int, Int)) {
+  Error(1)
+  |> promise.try_sync(fn(a) { promise.resolve(Ok(a + 1)) })
+  |> promise.tap(fn(a) {
+    let assert Error(1) = a
+  })
+}
+
 pub fn rescue_healthy_test() {
   promise.resolve(1)
   |> promise.rescue(fn(_) { 100 })
